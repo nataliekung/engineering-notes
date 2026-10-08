@@ -52,13 +52,13 @@ These closed-loop numbers leave out the time a real batcher spends waiting to co
 | tensor-core GEMM share of kernel time | 0.0% | 64.6% | |
 | kernel launches | 241 | 240 | unchanged |
 | device syncs | 2.03 | 2.03 | unchanged |
-| GPU active window | 7.46 ms | 7.45 ms | unchanged |
+| GPU active window (mean) | 7.56 ms | 7.45 ms | unchanged |
 | end-to-end latency p50 | 7.49 ms | 7.46 ms | unchanged |
 | kernel time / GPU window | 29.7% | 15.3% | bf16 lower |
 
 The top fp32 kernels are SIMT FP32 GEMMs: `ampere_sgemm_128x32_sliced1x4_tn`, `ampere_sgemm_32x32_sliced1x4_tn`, `ampere_sgemm_128x128_tn`. The top bf16 kernels are tensor-core GEMMs: `ampere_bf16_s16816gemm_bf16_64x64`, `cutlass_80_tensorop_bf16_s16816gemm`, `cutlass_80_wmma_tensorop_bf16_s161616gemm`. That is the whole mechanism behind the 2x: bf16 moves the matrix multiplies onto tensor cores, and GEMM time drops 2.4x.
 
-At batch size 1 none of that reaches the wall clock. A forward issues about 240 kernel launches but only 1 to 2 ms of GPU work inside a 7.5 ms window. The GPU is idle 70% of the time at fp32 and 85% at bf16, waiting for the CPU to launch the next kernel. Shrinking the kernels while keeping the launch count makes the GPU idle more, which is why occupancy goes down and latency stays put.
+At batch size 1 none of that reaches the wall clock. A forward issues about 240 kernel launches but only 1 to 2 ms of GPU work inside a roughly 7.5 ms window. The GPU is idle 70% of the time at fp32 and 85% at bf16, waiting for the CPU to launch the next kernel. Shrinking the kernels while keeping the launch count makes the GPU idle more, which is why occupancy goes down and latency stays put.
 
 The two runs agree. One pair occupies the GPU 15 to 30% of the time; a 20-pair request fills it, and only then does faster arithmetic turn into throughput.
 
