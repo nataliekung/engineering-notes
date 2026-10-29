@@ -13,6 +13,7 @@ Measured results and upstream work on inference runtimes and Ray infrastructure.
 | [ray-jobs-logs-after-node-removal.md](ray-jobs-logs-after-node-removal.md) | The Ray Jobs log endpoint returned 500 after a worker node left; an issue and a PR for a structured 503 |
 | [verl-fixes.md](verl-fixes.md) | Five verl fixes: nsys capture range, loop worker placement, a config constructor crash, weight-transfer receiver failures, unschedulable rollout servers |
 | [verl-no-learning-signal-detector.md](verl-no-learning-signal-detector.md) | RFC: fail fast when a GRPO run has zero advantage variance for the whole run |
+| [nested-tensor-jagged-dim-equal-length.md](nested-tensor-jagged-dim-equal-length.md) | Why `torch.nested.as_nested_tensor` makes the 4-wide component axis ragged when every sample has the same length, and where that reaches verl and TransferQueue |
 | [upstream-index.md](upstream-index.md) | Every upstream PR, issue and RFC with its current status |
 
 Related: [inference-runtime-lab](https://github.com/nataliekung/inference-runtime-lab), a small engine with paged KV accounting and continuous batching, with its own benchmark reports.

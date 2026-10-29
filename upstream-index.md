@@ -35,3 +35,15 @@ Status as of 2026-10-07. "Open" means rebased on the current default branch and 
 | item | type | date | status |
 |---|---|---|---|
 | [RFC #37003](https://github.com/vllm-project/vllm/issues/37003) Context-Aware KV-Cache Retention API | comment offering a block-level retention prototype (`retention_deadline_ns`, `retain()`, `popleft_evictable()`) as a draft PR | 2026-10-07 | waiting on the RFC authors so the work does not duplicate theirs |
+
+## Added 2026-10-29
+
+| item | type | status |
+|---|---|---|
+| [Ascend/TransferQueue#206](https://github.com/Ascend/TransferQueue/pull/206) `TQ_RAY_NAMESPACE` to keep concurrent jobs' controllers apart | PR, with tests | open |
+| [verl#8445](https://github.com/verl-project/verl/pull/8445) Correct the legacy trainer deprecation message | PR | open |
+| [verl#8446](https://github.com/verl-project/verl/pull/8446) Install a transformers version vLLM 0.24.0 accepts in `Dockerfile.stable.vllm` | PR | open |
+| [verl#8447](https://github.com/verl-project/verl/issues/8447) `setup.py` extras dropped by `pyproject.toml`; docs still use `.[trtllm]` | issue | open |
+| [verl#7899](https://github.com/verl-project/verl/issues/7899#issuecomment-6504217618) TransferQueue write sites of the equal-length mRoPE layout | comment with a run of the packing function | open thread |
+| [flashinfer#3634](https://github.com/flashinfer-ai/flashinfer/issues/3634#issuecomment-6504298371) Unset `MAX_JOBS` JIT build in a memory-limited container | comment | open thread |
+| [flash-attention#2638](https://github.com/Dao-AILab/flash-attention/issues/2638#issuecomment-6497707174) flash-attn 2.8.3 builds against torch 2.11 and CUDA 13.0 for sm90 | comment | open thread |
